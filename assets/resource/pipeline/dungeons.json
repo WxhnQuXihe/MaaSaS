@@ -1,0 +1,146 @@
+{
+    "selectHomePage": {
+        "template": "gameHome.png",
+        "recognition": "TemplateMatch",
+        "threshold": 0.7,
+        "method": 5,
+        "next": [
+            "selectFirstStep"
+        ]
+    },
+    "selectFirstStep": {
+        "template": "fuben.png",
+        "recognition": "TemplateMatch",
+        "threshold": 0.7,
+        "method": 5,
+        "next": [
+            "clickfuben"
+        ]
+    },
+    "clickfuben": {
+        "action": "Click",
+        "target": "selectFirstStep",
+        "post_delay": 1000,
+        "next": [
+            "selectSecondStep"
+        ]
+    },
+    "selectSecondStep": {
+        "template": "fubenPage.png",
+        "recognition": "TemplateMatch",
+        "threshold": 0.7,
+        "method": 5,
+        "next": [
+            "clickFuben"
+        ]
+    },
+    "clickFuben": {
+        "action": "Click",
+        "target": "selectSecondStep",
+        "post_delay": 1000,
+        "next": [
+            "selectThirdStep"
+        ]
+    },
+    "selectThirdStep": {
+        "action": "Swipe",
+        "duration": 300,
+        "begin": [
+            408,
+            420
+        ],
+        "end": [
+            408,
+            920
+        ],
+        "repeat": 3,
+        "next": [
+            "selectFourthStep"
+        ]
+    },
+    "selectFourthStep": {
+        "template": "shijieshu.png",
+        "recognition": "TemplateMatch",
+        "threshold": 0.7,
+        "method": 5,
+        "next": [
+            "enterFuben"
+        ]
+    },
+    "enterFuben": {
+        "action": "Click",
+        "target": "selectFourthStep",
+        "post_delay": 1000,
+        "next": [
+            "matchGamer"
+        ]
+    },
+    "matchGamer": {
+        "template": "pipei.png",
+        "recognition": "TemplateMatch",
+        "threshold": 0.7,
+        "method": 5,
+        "next": [
+            "clickPipei"
+        ]
+    },
+    "clickPipei": {
+        "action": "Click",
+        "target": "matchGamer",
+        "next": [
+            "waitForMatch"
+        ]
+    },
+    "waitForMatch": {
+        "template": "accept.png",
+        "recognition": "TemplateMatch",
+        "threshold": 0.7,
+        "method": 5,
+        "timeout": -1,
+        "rate_limit": 2000,
+        "next": [
+            "enterFubenAfterMatch"
+        ]
+    },
+    "enterFubenAfterMatch": {
+        "action": "Click",
+        "target": "waitForMatch",
+        "next": [
+            "waitForStart"
+        ],
+        "timeout": 36000
+    },
+    "waitForStart": {
+        "template": "permit.png",
+        "recognition": "TemplateMatch",
+        "threshold": 0.7,
+        "method": 5,
+        "next": [
+            "clickStart"
+        ]
+    },
+    "clickStart": {
+        "action": "Click",
+        "target": "waitForStart",
+        "post_delay": 1000,
+        "next": [
+            "searchQuit"
+        ]
+    },
+    "searchQuit": {
+        "template": "back.png",
+        "recognition": "TemplateMatch",
+        "threshold": 0.4,
+        "method": 5,
+        "timeout": -1,
+        "rate_limit": 5000,
+        "next": [
+            "clickQuit"
+        ]
+    },
+    "clickQuit": {
+        "action": "Click",
+        "target": "searchQuit",
+        "post_delay": 1000
+    }
+}

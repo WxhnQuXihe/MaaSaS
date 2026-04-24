@@ -6,20 +6,23 @@
             "entry": "StartGame",
             "defult_check": true,
             "description": "进入游戏实例",
-            "option": {
+            "option": [
+                "切换服务器"
+            ]
+        }
+    ],
+    "option": {
+        "切换服务器": {
+            "name": "服务器名称",
+            "label": "请输入服务器名称",
+            "description": "手动填写服务器名称，进入游戏后会自动识别并点击",
+            "key": "CUSTOMSERVER",
+            "type": "input",
+            "pipeline_type": {
                 "切换服务器": {
-                    "name": "服务器名称",
-                    "label": "请输入服务器名称",
-                    "description": "手动填写服务器名称，进入游戏后会自动识别并点击",
-                    "key": "CUSTOMSERVER",
-                    "type": "input",
-                    "pipeline_type": {
-                        "切换服务器": {
-                            "expected": "{服务器名称}"
-                        }
-                    }
+                    "expected": "{服务器名称}"
                 }
             }
         }
-    ]
+    }
 }

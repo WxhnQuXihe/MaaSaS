@@ -1,11 +1,29 @@
 {
     "task": [
         {
-            "name": "LinkStart",
-            "label": "砍斯汀我踏马来了",
+            "name": "开始游戏",
+            "label": "启动！砍斯汀我踏马来了",
             "entry": "StartGame",
             "defult_check": true,
-            "description": "进入游戏实例"
+            "description": "进入游戏实例",
+            "option": "切换服务器"
         }
-    ]
+    ],
+    "options": {
+        "切换服务器": {
+            "description": "手动填写服务器名称，进入游戏后会自动识别并点击",
+            "key": "CUSTOMSERVER",
+            "type": "input",
+            "inputs": [
+                {
+                    "name": "服务器名称",
+                    "label": "请输入服务器名称",
+                    "pipeline_type": "string"
+                }
+            ],
+            "pipeline_override": {
+                "expected": "{CUSTOMSERVER}"
+            }
+        }
+    }
 }

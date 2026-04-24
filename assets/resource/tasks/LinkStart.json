@@ -1,54 +1,52 @@
 {
+    "name": "LinkStart",
+    "description": "开始游戏并切换区服",
     "task": [
         {
-            "taskId": "task_start_game", // V2协议必填：唯一任务ID
-            "taskName": "开始游戏", // V2协议必填：任务名称
-            "taskType": "custom", // V2协议必填：任务类型（自定义功能填custom）
-            "timeout": 10000, // V2协议必填：超时时间（毫秒）
-            "retryCount": 1, // V2协议必填：重试次数
-            "name": "开始游戏",
+            "taskId": "task_start_game",
+            "taskName": "开始游戏",
+            "taskType": "custom",
+            "timeout": 10000,
+            "retryCount": 1,
             "label": "启动！砍斯汀我踏马来了",
             "entry": "StartGame",
             "default_check": true,
             "description": "进入游戏实例",
-            // V2协议：option是配置对象，而非字符串数组（前端渲染输入框的核心）
             "option": {
                 "切换区服": {
                     "name": "切换服务器",
                     "label": "切换服务器名称",
-                    "type": "input", // 标识为输入框类型（前端识别后渲染输入框）
-                    "placeholder": "请输入服务器名称",
-                    "description": "手动填写服务器名称，进入游戏后会自动识别并点击",
-                    // inputs数组：输入项配置（V2协议要求数组格式）
-                    "inputs": [
+                    "description": "手动填写服务器名称，进入游戏后自动识别并点击",
+                    "type": "object",
+                    "properties": {
+                        "server_name": {
+                            "type": "string",
+                            "title": "服务器名称",
+                            "description": "请输入要切换的游戏服务器名称",
+                            "default": "",
+                            "required": true
+                        }
+                    },
+                    "required": [
+                        "server_name"
+                    ],
+                    "configs": [
                         {
-                            "name": "服务器名称",
-                            "label": "请输入服务器名称",
-                            "type": "text", // 补充：指定输入框类型（文本框）
-                            "required": true, // 可选：标记为必填项（前端会标红提示）
-                            "pipeline_type": {
+                            "key": "server_name",
+                            "label": "服务器名称",
+                            "type": "input",
+                            "placeholder": "输入你的服务器四字名称",
+                            "required": true,
+                            "defaultValue": "",
+                            "pipeline_override": {
                                 "切换服务器": {
-                                    "expected": "{服务器名称}"
+                                    "expected": "{server_name}"
                                 }
                             }
                         }
                     ]
                 }
-            },
-            "nextConditions": [ // V2协议必填：流程跳转条件
-                {
-                    "conditionType": "always",
-                    "nextTaskId": "task_end"
-                }
-            ]
-        },
-        {
-            "taskId": "task_end",
-            "taskName": "流程结束",
-            "taskType": "end",
-            "timeout": 1000,
-            "retryCount": 0,
-            "nextConditions": []
+            }
         }
     ]
 }

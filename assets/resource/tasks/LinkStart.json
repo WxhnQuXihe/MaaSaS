@@ -18,14 +18,14 @@
                 {
                     "name": "服务器名称",
                     "placeholder": "请输入服务器名称",
-                    "default": "",
-                    "pipeline_override": {
-                        "切换服务器": {
-                            "expected": "{服务器名称}"
-                        }
-                    }
+                    "default": ""
                 }
-            ]
+            ],
+            "pipeline_override": {
+                "切换服务器": {
+                    "expected": "{服务器名称}"
+                }
+            }
         }
     }
 }

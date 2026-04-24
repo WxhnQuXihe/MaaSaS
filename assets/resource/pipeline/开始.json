@@ -1,0 +1,78 @@
+{
+    "StartGame": {
+        "action": {
+            "type": "StartApp",
+            "param": {
+                "package": "com.leiting.zjcs"
+            }
+        },
+        "rate_limit": 5000,
+        "timeout": 72000,
+        "post_delay": 500,
+        "next": [
+            "寻找公告"
+        ]
+    },
+    "寻找公告": {
+        "template": "Announcement.png",
+        "recognition": "TemplateMatch",
+        "threshold": 0.7,
+        "method": 5,
+        "next": [
+            "寻找返回键"
+        ]
+    },
+    "寻找返回键": {
+        "template": "back.png",
+        "recognition": "TemplateMatch",
+        "threshold": 0.7,
+        "method": 5,
+        "post_delay": 1000,
+        "next": [
+            "关闭公告"
+        ]
+    },
+    "关闭公告": {
+        "action": "Click",
+        "target": "寻找返回键",
+        "post_delay": 1000,
+        "next": [
+            "寻找服务器按钮"
+        ]
+    },
+    "寻找服务器按钮": {
+        "template": "servers.png",
+        "recognition": "TemplateMatch",
+        "threshold": 0.7,
+        "method": 5,
+        "post_delay": 1000,
+        "next": [
+            "点击服务器"
+        ]
+    },
+    "点击服务器": {
+        "action": "Click",
+        "target": "寻找服务器按钮",
+        "post_delay": 1000,
+        "next": [
+            "切换服务器"
+        ]
+    },
+    "切换服务器": {
+        "recognition": "OCR",
+        "expected": "盛典礼仪",
+        "threshold": 0.5,
+        "action": "Click",
+        "next": [
+            "进入游戏"
+        ]
+    },
+    "进入游戏": {
+        "recognition": "OCR",
+        "expected": "点击任意处开始游戏",
+        "action": "Click",
+        "threshold": 0.7,
+        "post_delay": 300,
+        "repeat": 3
+    }
+}

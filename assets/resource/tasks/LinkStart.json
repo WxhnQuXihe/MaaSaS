@@ -1,52 +1,31 @@
 {
-    "name": "LinkStart",
-    "description": "开始游戏并切换区服",
     "task": [
         {
-            "taskId": "task_start_game",
-            "taskName": "开始游戏",
-            "taskType": "custom",
-            "timeout": 10000,
-            "retryCount": 1,
+            "name": "开始游戏",
             "label": "启动！砍斯汀我踏马来了",
             "entry": "StartGame",
-            "default_check": true,
+            "defult_check": true,
             "description": "进入游戏实例",
-            "option": {
-                "切换区服": {
-                    "name": "切换服务器",
-                    "label": "切换服务器名称",
-                    "description": "手动填写服务器名称，进入游戏后自动识别并点击",
-                    "type": "object",
-                    "properties": {
-                        "server_name": {
-                            "type": "string",
-                            "title": "服务器名称",
-                            "description": "请输入要切换的游戏服务器名称",
-                            "default": "",
-                            "required": true
-                        }
-                    },
-                    "required": [
-                        "server_name"
-                    ],
-                    "configs": [
-                        {
-                            "key": "server_name",
-                            "label": "服务器名称",
-                            "type": "input",
-                            "placeholder": "输入你的服务器四字名称",
-                            "required": true,
-                            "defaultValue": "",
-                            "pipeline_override": {
-                                "切换服务器": {
-                                    "expected": "{server_name}"
-                                }
-                            }
-                        }
-                    ]
-                }
-            }
+            "option": [
+                "切换服务器"
+            ]
         }
-    ]
+    ],
+    "option": {
+        "切换服务器": {
+            "type": "input",
+            "inputs": [
+                {
+                    "name": "服务器名称",
+                    "placeholder": "请输入服务器名称",
+                    "default": "",
+                    "pipeline_override": {
+                        "切换服务器": {
+                            "expected": "{服务器名称}"
+                        }
+                    }
+                }
+            ]
+        }
+    }
 }

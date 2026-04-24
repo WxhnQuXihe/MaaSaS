@@ -1,0 +1,11 @@
+{
+    "task": [
+        {
+            "name": "LinkStart",
+            "label": "砍斯汀我踏马来了",
+            "entry": "StartGame",
+            "defult_check": true,
+            "description": "这是一个示例任务，展示了如何从界面启动一个游戏流程。。"
+        }
+    ]
+}
